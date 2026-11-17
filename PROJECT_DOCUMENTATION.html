@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Prediction & Analytics - Project Documentation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+        
+        :root {
+            --primary: #1E88E5;
+            --primary-dark: #1565C0;
+            --secondary: #00897B;
+            --bg: #FFFFFF;
+            --text: #212121;
+            --text-muted: #616161;
+            --border: #E0E0E0;
+            --card-bg: #F8F9FA;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.65;
+            color: var(--text);
+            background-color: var(--bg);
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+        }
+
+        .action-bar {
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 12px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            border: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary);
+            color: white;
+            padding: 9px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            background: var(--card-bg);
+        }
+
+        h1, h2, h3, h4 {
+            color: #111827;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            color: var(--primary-dark);
+            border-bottom: 2px solid #E3F2FD;
+            padding-bottom: 12px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 36px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            margin-top: 24px;
+            color: var(--primary);
+        }
+
+        p, li {
+            font-size: 15px;
+            color: #374151;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border: 1px solid var(--border);
+        }
+
+        th {
+            background-color: #F1F5F9;
+            color: #1E293B;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #F8FAFC;
+        }
+
+        pre, code {
+            font-family: 'JetBrains Mono', Consolas, Monaco, monospace;
+            font-size: 13.5px;
+        }
+
+        code {
+            background-color: #F1F5F9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #0F172A;
+        }
+
+        pre {
+            background-color: #0F172A;
+            color: #F8FAFC;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            line-height: 1.5;
+        }
+
+        pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+        }
+
+        blockquote {
+            margin: 20px 0;
+            padding: 12px 20px;
+            border-left: 4px solid var(--primary);
+            background-color: #EFF6FF;
+            color: #1E40AF;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge-green { background: #DCFCE7; color: #166534; }
+        .badge-blue { background: #DBEAFE; color: #1E40AF; }
+
+        @media print {
+            body {
+                padding: 0;
+            }
+            .action-bar {
+                display: none !important;
+            }
+            pre {
+                white-space: pre-wrap;
+                word-break: break-all;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="action-bar">
+            <div>
+                <strong>📄 Salary Prediction Platform — Technical Documentation</strong>
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn btn-outline" onclick="window.print()">🖨️ Print / Save as PDF</button>
+                <a href="PROJECT_DOCUMENTATION.md" download class="btn">⬇️ Download Markdown (.md)</a>
+            </div>
+        </div>
+        <div id="content">
+<h1>📖 End-to-End Salary Prediction & Workforce Analytics Platform</h1>
+<h3>*Comprehensive Technical Architecture, Methodology, and Implementation Guide*</h3>
+<hr style="border:0; border-top:1px solid #E2E8F0; margin:28px 0;">
+<h2>📌 1. Project Overview & Business Problem</h2>
+<h3>1.1 What is This Project?</h3>
+<p>The <strong>Salary Prediction & Workforce Analytics Platform</strong> is a full-stack, production-grade Machine Learning solution designed to accurately estimate competitive market compensation for industry professionals. Given personal and professional attributes—such as <strong>Age</strong>, <strong>Gender</strong>, <strong>Education Level</strong>, <strong>Job Title</strong>, and <strong>Years of Experience</strong>—the system estimates the expected annual compensation in USD.</p>
+<p>In addition to individual predictions, the project features an interactive multi-tab web dashboard, a batch scoring pipeline for enterprise datasets, and detailed algorithmic evaluation metrics.</p>
+<h3>1.2 Real-World Use Cases</h3>
+<ul>
+<li>**Talent Acquisition & HR Planning:** Establish equitable, competitive compensation offers that attract top-tier candidates while staying aligned with industry percentiles.</li>
+<li>**Compensation Benchmarking & Pay Audits:** Detect wage anomalies, salary compression, or potential disparities across gender and education tiers.</li>
+<li>**Employee Career Planning:** Enable professionals to forecast earning potential based on skill milestones, advanced degrees, and years in the workforce.</li>
+</ul>
+<hr style="border:0; border-top:1px solid #E2E8F0; margin:28px 0;">
+<h2>📊 2. Dataset Architecture & Exploration</h2>
+<p>The model is trained on a workforce compensation dataset comprising <strong>6,704 historical employee profiles</strong>.</p>
+<h3>2.1 Feature Descriptions</h3>
+<table><thead><tr><th>Feature Name</th><th>Type</th><th>Description</th><th>Observed Domain Range</th></tr></thead><tbody>
+<tr><td>**`Age`**</td><td>Continuous Numeric</td><td>Age of the employee in years</td><td>21 – 62 years</td></tr>
+<tr><td>**`Gender`**</td><td>Categorical</td><td>Biological or identified gender</td><td>Male, Female, Other</td></tr>
+<tr><td>**`Education Level`**</td><td>Ordinal Categorical</td><td>Highest educational credential achieved</td><td>High School, Bachelor's, Master's, PhD</td></tr>
+<tr><td>**`Job Title`**</td><td>Categorical</td><td>Professional job title / designation</td><td>174 unique titles (consolidated)</td></tr>
+<tr><td>**`Years of Experience`**</td><td>Continuous Numeric</td><td>Total cumulative professional experience</td><td>0.0 – 34.0 years</td></tr>
+<tr><td>**`Salary`** *(Target)*</td><td>Continuous Numeric</td><td>Annual gross compensation in USD</td><td>\$350 – \$250,000</td></tr>
+</tbody></table>
+<h3>2.2 Key Statistical Observations</h3>
+<ul>
+<li>**Mean Salary:** ~\$115,329 USD</li>
+<li>**Median Salary:** ~\$115,000 USD</li>
+<li>**Average Experience:** ~8.1 Years</li>
+<li>**Workforce Age Distribution:** Centered around 27–34 years, showing a predominantly young, growing technical workforce.</li>
+</ul>
+<hr style="border:0; border-top:1px solid #E2E8F0; margin:28px 0;">
+<h2>⚙️ 3. Data Preprocessing & Feature Engineering Pipeline</h2>
+<p>Raw data cannot be passed directly into mathematical estimators without rigorous transformation. We implemented a robust transformation sequence:</p>
+<pre><code>
+flowchart TD
+    A["Raw Dataset (6,704 rows)"] --&gt; B["1. Missing Value Cleaning (dropna)"]
+    B --&gt; C["2. Text Standardization &amp; Normalization"]
+    C --&gt; D["3. High-Cardinality Job Title Binning (&lt;=25 to Others)"]
+    D --&gt; E["4. Ordinal Encoding for Education Level"]
+    E --&gt; F["5. Label Encoding for Gender"]
+    F --&gt; G["6. One-Hot Encoding for Job Titles (Drop First)"]
+    G --&gt; H["7. Outlier Inspection (IQR Method)"]
+    H --&gt; I["Preprocessed Feature Matrix X (53 columns) + Target Y"]
+</code></pre>
+<h3>3.1 Handling Missing Data</h3>
+<ul>
+<li>A small subset of rows contained missing (`null`) values across target or feature columns.</li>
+<li>Rows with missing values were eliminated using `df = df.dropna()`, yielding **6,698 high-integrity training records**.</li>
+</ul>
+<h3>3.2 Category Unification & Text Normalization</h3>
+<ul>
+<li>In the raw dataset, educational credentials appeared under inconsistent string keys (e.g., `"Bachelor's Degree"` vs `"Bachelor's"`, `"Master's Degree"` vs `"Master's"`, `"phD"` vs `"PhD"`).</li>
+<li>All variations were mapped to four canonical levels: `High School`, `Bachelor's`, `Master's`, and `PhD`.</li>
+</ul>
+<h3>3.3 High-Cardinality Categorical Binning</h3>
+<ul>
+<li>The raw dataset contained 174 unique job titles. Many obscure titles had only 1 or 2 occurrences.</li>
+<li>Passing 174 dummy columns introduces extreme feature sparsity and risks overfitting.</li>
+<li>**Resolution:** Any job title with **25 or fewer occurrences** was dynamically binned into an `'Others'` category. This preserved the top **49 major industry roles** while controlling dimensionality.</li>
+</ul>
+<h3>3.4 Feature Encoding Strategy</h3>
+<p>1. <strong>Ordinal Encoding (Education Level):</strong> Because educational degrees carry a natural progression, domain-based numeric ordering was applied:</p>
+<p>   $$\text{High School} \rightarrow 0, \quad \text{Bachelor's} \rightarrow 1, \quad \text{Master's} \rightarrow 2, \quad \text{PhD} \rightarrow 3$$</p>
+<p>2. <strong>Label Encoding (Gender):</strong> Transformed categorical gender classes (<code>Female: 0</code>, <code>Male: 1</code>, <code>Other: 2</code>).</p>
+<p>3. <strong>One-Hot Encoding (Job Title):</strong> Generated binary indicator dummy columns using <code>pd.get_dummies(df['Job Title'], drop_first=True)</code>. Dropping the first column avoids perfect multicollinearity (the <em>Dummy Variable Trap</em>).</p>
+<h3>3.5 Outlier Analysis</h3>
+<ul>
+<li>An Interquartile Range (IQR) analysis was performed on target salaries:</li>
+</ul>
+<p>  $$\text{IQR} = Q_3 - Q_1 = \$160,000 - \$70,000 = \$90,000$$</p>
+<p>  $$\text{Lower Bound} = Q_1 - 1.5 \times \text{IQR} = -\$65,000 \quad (\text{Bounded at } \$0)$$</p>
+<p>  $$\text{Upper Bound} = Q_3 + 1.5 \times \text{IQR} = \$295,000$$</p>
+<ul>
+<li>All salaries in the dataset (\$350 to \$250,000) fell within valid bounds, confirming no synthetic data trimming was required.</li>
+</ul>
+<hr style="border:0; border-top:1px solid #E2E8F0; margin:28px 0;">
+<h2>🧠 4. Machine Learning Algorithms & Mathematical Foundations</h2>
+<p>Because the target variable (<code>Salary</code>) is continuous, this problem is modeled as <strong>Supervised Regression</strong>. We evaluated three distinct algorithm families:</p>
+<h3>4.1 Linear Regression (Ordinary Least Squares)</h3>
+<ul>
+<li>**Equation:**</li>
+</ul>
+<p>  $$\hat{y} = \beta_0 + \sum_{j=1}^{p} \beta_j x_j$$</p>
+<ul>
+<li>**Objective:** Minimize Residual Sum of Squares (RSS):</li>
+</ul>
+<p>  $$\mathcal{L}_{OLS} = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$$</p>
+<ul>
+<li>**Role:** Serves as the linear baseline. While computationally instantaneous, it assumes additive linear relationships and struggles with complex feature interactions between job seniority and education.</li>
+</ul>
+<h3>4.2 Decision Tree Regressor (CART)</h3>
+<ul>
+<li>**Mechanism:** Recursively partitions the feature space into hyper-rectangles by greedily selecting the split feature $j$ and split point $s$ that maximize Mean Squared Error reduction:</li>
+</ul>
+<p>  $$\min_{j,s} \left[ \sum_{x_i \in R_1(j,s)} (y_i - \bar{y}_{R_1})^2 + \sum_{x_i \in R_2(j,s)} (y_i - \bar{y}_{R_2})^2 \right]$$</p>
+<ul>
+<li>**Hyperparameters Tuned:** `max_depth` $\in [2, 4, 6, 8, 10]$, `min_samples_split` $\in [2, 5, 10, 20]$.</li>
+<li>**Role:** Successfully captures non-linear relationships, but individual trees can exhibit high variance.</li>
+</ul>
+<h3>4.3 Random Forest Regressor (Ensemble Bagging) — *Selected Champion*</h3>
+<ul>
+<li>**Mechanism:** An ensemble of $B$ independent, deep decision trees trained on bootstrap samples of the training data. At every node split, only a random subset of $m \approx \sqrt{p}$ features is considered:</li>
+</ul>
+<p>  $$\hat{f}_{rf}^B(x) = \frac{1}{B} \sum_{b=1}^{B} T_b(x)$$</p>
+<ul>
+<li>**Why It Wins:**</li>
+</ul>
+<p>  1. <strong>Variance Reduction:</strong> Averaging across decorrelated trees dampens single-tree variance without increasing bias.</p>
+<p>  2. <strong>Non-Linear Interactions:</strong> Handles complex salary plateaus (e.g. experience mattering more for PhDs than High School graduates).</p>
+<p>  3. <strong>Robustness to Collinearity:</strong> Remains stable even when Age and Experience correlate strongly ($r \approx 0.98$).</p>
+<hr style="border:0; border-top:1px solid #E2E8F0; margin:28px 0;">
+<h2>📈 5. Model Evaluation & Benchmark Results</h2>
+<p>Models were trained on <strong>75% of the data</strong> (5,023 records) and rigorously evaluated on an unseen <strong>25% holdout test set</strong> (1,675 records).</p>
+<h3>5.1 Evaluation Metrics Defined</h3>
+<ul>
+<li>**Coefficient of Determination ($R^2$):** Proportion of variance in salary explained by the model:</li>
+</ul>
+<p>  $$R^2 = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2}$$</p>
+<ul>
+<li>**Root Mean Squared Error (RMSE):** Average magnitude of prediction error, heavily penalizing large outliers:</li>
+</ul>
+<p>  $$\text{RMSE} = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}$$</p>
+<ul>
+<li>**Mean Absolute Error (MAE):** Average absolute deviation between actual and predicted salary:</li>
+</ul>
+<p>  $$\text{MAE} = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|$$</p>
+<h3>5.2 Comparative Performance Matrix</h3>
+<table><thead><tr><th>Algorithm</th><th>$R^2$ Score</th><th>RMSE (Error)</th><th>MAE (Error)</th><th>Verdict</th></tr></thead><tbody>
+<tr><td>🌲 **Random Forest Regressor**</td><td>**97.10%**</td><td>**\$9,007 USD**</td><td>**\$3,510 USD**</td><td>👑 **Selected Champion**</td></tr>
+<tr><td>🌳 **Decision Tree Regressor**</td><td>**94.12%**</td><td>**\$12,940 USD**</td><td>**\$7,646 USD**</td><td>🥈 Solid Baseline</td></tr>
+<tr><td>📈 **Linear Regression**</td><td>**83.29%**</td><td>**\$21,825 USD**</td><td>**\$15,753 USD**</td><td>🥉 Underfits non-linear patterns</td></tr>
+</tbody></table>
+<h3>5.3 Feature Importance Findings</h3>
+<p>Through Gini / Mean Decrease in Impurity analysis:</p>
+<p>1. <strong>Years of Experience (~65% importance):</strong> The single most dominant factor determining compensation across all industries.</p>
+<p>2. <strong>Age (~18% importance):</strong> Acts as a proxy for career maturity and cumulative industry exposure.</p>
+<p>3. <strong>Specific Job Titles & Education (~17% combined):</strong> Creates the vertical offset (e.g. Director of Data Science or Software Engineering Manager commanding \$180K+ starting baselines).</p>
+<hr style="border:0; border-top:1px solid #E2E8F0; margin:28px 0;">
+<h2>💻 6. Software Architecture & Implementation Details</h2>
+<pre><code>
+Salary_Prediction-main/
+│
+├── Salary_Data.csv              # Cleaned workforce dataset (6,698 profiles)
+├── salary_model.joblib          # Serialized Random Forest model &amp; feature schema
+│
+├── app.py                       # 4-Tab Interactive Streamlit Web Platform
+├── predict.py                   # Standalone CLI Prediction Engine
+│
+├── Salary Prediction.py         # Full Training, EDA, and Evaluation Pipeline
+├── Salary Prediction.ipynb      # Step-by-step Interactive Jupyter Notebook
+│
+├── requirements.txt             # Clean, pinned Python dependencies
+├── README.md                    # Quick-start documentation
+└── PROJECT_DOCUMENTATION.md     # Detailed technical blueprint (This file)
+</code></pre>
+<h3>6.1 Interactive Streamlit Application (`app.py`)</h3>
+<p>Features 4 dedicated modules:</p>
+<p>1. <strong>📊 Tab 1: Dashboard / Overview:</strong></p>
+<ul>
+<li>Executive KPI metric cards (Total Sample Size, Average Salary, Median Salary, Avg Experience).</li>
+<li>Altair visualizations: Top 10 highest paying jobs, education salary boxplots, experience trajectory scatter with regression lines, and gender compensation comparison.</li>
+</ul>
+<p>2. <strong>🔮 Tab 2: Salary Prediction:</strong></p>
+<ul>
+<li>Interactive inputs (Age, Gender, Education, Role, Experience).</li>
+<li>Predicted Annual Salary, Monthly breakdown, and Hourly equivalent.</li>
+<li>Dynamic Career Tier badges (Entry, Mid, Senior, Executive).</li>
+<li>Market Benchmark comparison bar showing where the candidate ranks relative to dataset quartiles ($Q_1$, Median, $Q_3$).</li>
+</ul>
+<p>3. <strong>📁 Tab 3: Batch CSV Prediction:</strong></p>
+<ul>
+<li>**📥 Download Sample CSV Template:** Provides a ready-to-use CSV template.</li>
+<li>**Bulk File Uploader:** Drag-and-drop CSV parser with case-insensitive column matching.</li>
+<li>**Instant Batch Scoring:** Computes predictions across thousands of profiles in seconds.</li>
+<li>**📥 Export Scored CSV:** One-click download of the enriched dataset.</li>
+</ul>
+<p>4. <strong>🔬 Tab 4: Model Insights:</strong></p>
+<ul>
+<li>Model leaderboard matrix ($R^2$, RMSE, MAE).</li>
+<li>Actual vs. Predicted scatter plot with $y = x$ parity diagonal.</li>
+<li>Residual distribution histogram verifying zero-centered, bell-shaped error symmetry.</li>
+<li>Top 10 feature importance bar chart.</li>
+</ul>
+<h3>6.2 Standalone CLI Prediction Engine (`predict.py`)</h3>
+<p>Enables integration into terminal workflows, headless scripts, or backend services:</p>
+<ul>
+<li>**Interactive Mode:**</li>
+</ul>
+<p>  <code></code>`bash</p>
+<p>  python predict.py</p>
+<p>  <code></code>`</p>
+<ul>
+<li>**Direct Argument Mode:**</li>
+</ul>
+<p>  <code></code>`bash</p>
+<p>  python predict.py --age 30 --gender Male --education "Master's" --experience 6 --job "Data Scientist"</p>
+<p>  <code></code>`</p>
+<hr style="border:0; border-top:1px solid #E2E8F0; margin:28px 0;">
+<h2>🚀 7. How to Run Locally</h2>
+<h3>1. Prerequisites</h3>
+<p>Ensure Python 3.10+ is installed on your machine.</p>
+<h3>2. Install Dependencies</h3>
+<pre><code>
+pip install -r requirements.txt
+</code></pre>
+<h3>3. Launch the Web Application</h3>
+<pre><code>
+streamlit run app.py
+</code></pre>
+<p>Open your browser at <code>http://localhost:8501</code>.</p>
+<h3>4. Re-train the Machine Learning Model</h3>
+<p>To reproduce training, perform EDA, and re-export <code>salary_model.joblib</code>:</p>
+<pre><code>
+python "Salary Prediction.py"
+</code></pre>
+<hr style="border:0; border-top:1px solid #E2E8F0; margin:28px 0;">
+<h2>🌐 8. Cloud Deployment (Streamlit Community Cloud)</h2>
+<p>The repository is pre-configured for zero-configuration deployment:</p>
+<p>1. Push all code to GitHub (<code>https://github.com/Gavybytes/Salary_Prediction.git</code>).</p>
+<p>2. Log into <strong>[share.streamlit.io](https://share.streamlit.io)</strong> using your GitHub credentials.</p>
+<p>3. Select <strong>Deploy an app</strong>, point to repository <code>Gavybytes/Salary_Prediction</code>, branch <code>main</code>, and main file <code>app.py</code>.</p>
+<p>4. Click <strong>Deploy!</strong> — the live application will be deployed and globally accessible within 2 minutes.</p>
+<hr style="border:0; border-top:1px solid #E2E8F0; margin:28px 0;">
+<h2>🏆 9. Summary & Highlights</h2>
+<ul>
+<li>**High Predictive Accuracy:** Ensemble Random Forest achieves **97.1% $R^2$** with an average absolute error of only **\$3,510**.</li>
+<li>**Zero Technical Debt:** Hardcoded paths, deprecated Pandas 3.x chained assignments, and outdated Scikit-Learn parameters were resolved.</li>
+<li>**Production-Grade Delivery:** Complete with interactive web dashboards, bulk CSV processing, CLI tools, and continuous cloud deployment.</li>
+</ul></div></div></body></html>
