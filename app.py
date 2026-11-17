@@ -135,6 +135,32 @@ def main():
         "• Trained on 6,698 verified profiles"
     )
 
+    # Documentation Download Buttons
+    st.sidebar.divider()
+    st.sidebar.subheader("📥 Project Documentation")
+    doc_md_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'PROJECT_DOCUMENTATION.md')
+    doc_pdf_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'PROJECT_DOCUMENTATION.pdf')
+
+    if os.path.exists(doc_pdf_path):
+        with open(doc_pdf_path, 'rb') as f_pdf:
+            st.sidebar.download_button(
+                label="📕 Download Documentation (PDF)",
+                data=f_pdf.read(),
+                file_name="PROJECT_DOCUMENTATION.pdf",
+                mime="application/pdf",
+                use_container_width=True
+            )
+
+    if os.path.exists(doc_md_path):
+        with open(doc_md_path, 'r', encoding='utf-8') as f_md:
+            st.sidebar.download_button(
+                label="📄 Download Documentation (MD)",
+                data=f_md.read(),
+                file_name="PROJECT_DOCUMENTATION.md",
+                mime="text/markdown",
+                use_container_width=True
+            )
+
     model_data = load_model_data()
     dataset = load_dataset()
 
